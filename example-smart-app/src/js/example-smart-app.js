@@ -21,6 +21,11 @@
                       }
                     }
                   });
+        var enc = smart.patient.api.fetchAll({
+                    type: 'Encounter',
+                    query: {
+                    }
+        });
 
         $.when(pt, obv).fail(onError);
 
@@ -61,11 +66,24 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
           ret.resolve(p);
+          
+          
         });
+        
+        $.when(pt, enc).fail(onError);
+        $.when(pt, enc).done(function(patient, enc) {
+       for(var i=0 ; i < enc.length; i++)
+      $('#encounter').append("<tr><td>" + enc[i].id + "</td><td> " + enc[i].class + "</td></tr>");
+       
+    });
       } else {
         onError();
       }
     }
+    
+    
+    
+    
 
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
