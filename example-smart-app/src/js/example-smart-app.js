@@ -75,7 +75,7 @@
         $.when(pt, enc).fail(onError);
         $.when(pt, enc).done(function(patient, enc) {
        for(var i=0 ; i < enc.length; i++)
-      $('#encounter').append("<tr><td>" + enc[i].id + "</td><td> " + enc[i].class + "</td></tr>");
+      $('#encounter').append("<tr><td>" + Math.floor(Math.random() * 33877444333445); + "</td><td> " + enc[i].class + "</td></tr>");
        
     });
       } else {
